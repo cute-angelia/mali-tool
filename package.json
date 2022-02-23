@@ -1,0 +1,25 @@
+{
+  "name": "mali-utils",
+  "version": "1.0.0",
+  "description": "mali utils for javascript",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cute-angelia/mali-utils.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "vanilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cute-angelia/mali-utils/issues"
+  },
+  "homepage": "https://github.com/cute-angelia/mali-utils#readme",
+  "dependencies": {
+    "base-64": "^1.0.0"
+  }
+}
