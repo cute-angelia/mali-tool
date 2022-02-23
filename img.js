@@ -3,8 +3,8 @@ import b64 from "base-64"
 export function urlToDataUrl(url) {
   return new Promise((resolve, reject) => {
     fetch(url, {
-      credentials: 'include',
-    })
+        credentials: 'include',
+      })
       .then(response => response.blob())
       .then(blob => new Promise((resolve2, reject2) => {
         const reader = new FileReader()
@@ -39,4 +39,27 @@ export function dataURItoBlob(dataURI) {
     var bb = new Blob([ab]);
     resolve(mimeString, bb)
   })
+}
+
+// 图片具大化
+export function largeImg(imgUrl, platform) {
+  switch (platform) {
+    case "weibo":
+      // 微博
+      if (imgUrl && imgUrl.indexOf("sinaimg.cn") > 0) {
+        // https://wx3.sinaimg.cn/mw690/002C8iduly1gvbmia82psj622o340u1102.jpg
+        var b = new URL(imgUrl)
+        var temps = b.pathname.split('/')
+        temps[1] = 'large'
+        imgUrl = b.origin + "" + temps.join("/")
+      }
+      break;
+    case "twitter":
+      if (imgUrl.indexOf("?") > 0) {
+        imgUrl = imgUrl.substring(0, imgUrl.indexOf("?"))
+        imgUrl = imgUrl + "?format=jpg&name=orig"
+        break;
+      }
+  }
+  return imgUrl
 }
