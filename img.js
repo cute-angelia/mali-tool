@@ -42,24 +42,24 @@ export function dataURItoBlob(dataURI) {
 }
 
 // 图片具大化
-export function largeImg(imgUrl, platform) {
-  switch (platform) {
-    case "weibo":
-      // 微博
-      if (imgUrl && imgUrl.indexOf("sinaimg.cn") > 0) {
-        // https://wx3.sinaimg.cn/mw690/002C8iduly1gvbmia82psj622o340u1102.jpg
-        var b = new URL(imgUrl)
-        var temps = b.pathname.split('/')
-        temps[1] = 'large'
-        imgUrl = b.origin + "" + temps.join("/")
-      }
-      break;
-    case "twitter":
+export function largeImg(imgUrl) {
+  if (imgUrl) {
+    // 微博
+    if (imgUrl.indexOf("sinaimg.cn") > 0) {
+      // https://wx3.sinaimg.cn/mw690/002C8iduly1gvbmia82psj622o340u1102.jpg
+      var b = new URL(imgUrl)
+      var temps = b.pathname.split('/')
+      temps[1] = 'large'
+      imgUrl = b.origin + "" + temps.join("/")
+    }
+    // twitter
+    if (imgUrl.indexOf("twimg.com") > 0) {
       if (imgUrl.indexOf("?") > 0) {
         imgUrl = imgUrl.substring(0, imgUrl.indexOf("?"))
-        imgUrl = imgUrl + "?format=jpg&name=orig"
-        break;
       }
+      imgUrl = imgUrl + "?format=jpg&name=orig"
+    }
   }
+
   return imgUrl
 }
