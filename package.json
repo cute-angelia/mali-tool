@@ -1,6 +1,6 @@
 {
   "name": "mali-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "mali utils for javascript",
   "type": "module",
   "scripts": {
